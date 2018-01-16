@@ -81,6 +81,50 @@ passport.deserializeUser(function (id, done) {
 });
 
 
+router.post('/register', function (req,res) {
+
+    var name = req.body.name;
+    var email = req.body.email;
+    var password = req.body.password;
+    var cpassword = req.body.cpassword;
+    var username = req.body.username;
+
+    //Validation of form
+    req.checkBody('name', 'Name is required').notEmpty();
+    req.checkBody('username', 'Username is required').notEmpty();
+    req.checkBody('email', 'EmailID is required').notEmpty();
+    req.checkBody('email', 'Email is invalid').isEmail();
+    req.checkBody('password', 'Password is required').notEmpty();
+    req.checkBody('cpassword', 'Passwords should match').equals(req.body.password);
+    console.log(cpassword);
+
+    var errors= req.validationErrors();
+    if(errors){
+        res.render('register',{
+            errors:errors
+        });
+    }else{
+        var newUser = new User({
+            FirstName: name,
+            UserName: username,
+            EmailID: email,
+            Password: password
+        });
+
+
+        User.createUser(newUser, function(err, user){
+            if (err) throw err;
+            console.log(user);
+        });
+
+        req.flash('success_msg', 'You are now registered.. Login to continue');
+        res.redirect('/users/login');
+    }
+
+});
+
+
+
 router.post('/login',
     passport.authenticate('local', {successRedirect:'/', failureRedirect:'/users/login',failureFlash: true}),
     function(req, res) {
