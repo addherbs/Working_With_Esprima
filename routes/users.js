@@ -48,6 +48,78 @@ router.post('/refreshPortalList', function (req,res) {
     });
 });
 
+// Create a portal
+router.post('/createPortal', function (req,res) {
+    var pName = req.body.pName;
+    var pPassword = req.body.pPassword;
+    var hours = req.body.hours;
+    var minutes = req.body.mins;
+    var secs = req.body.secs;
+    var message = req.body.message;
+    var count = req.body.count;
+    var owner_id = req.body.owner_id;
+    var owner_username = req.body.owner_username;
+    var owner_email = req.body.owner_email;
+
+    var cpPassword = req.body.cpPassword;
+
+    var owner_details = {
+        "owner_id" :owner_id ,
+        "owner_username": owner_username,
+        "owner_email": owner_email
+    };
+
+    var ttl = parseInt(hours*3600) + parseInt(minutes*60) + parseInt(secs);
+    console.log("ttl: ", ttl);
+
+    console.log("Portal Name:"+ pName + "\nPortal Password:"+pPassword +"\nHours-Mins-Secs: "+ hours +"-" +minutes+ "-"+ secs +
+        "\nMessage:" + message + "\nTotal TTL: "+ ttl + "\t count: " + count);
+
+    var currentDate = new Date();
+    console.log("Current Date is: ", currentDate);
+    currentDate.setSeconds(currentDate.getSeconds() + ttl);
+    console.log("Current Date is: ", currentDate);
+
+    //Validation of form
+    req.checkBody('pName', 'Portal Name is required').notEmpty();
+    req.checkBody('pPassword', 'Portal Password is required').notEmpty();
+    req.checkBody('hours', 'Hours is required/ Otherwise enter 0/ Should be Number').notEmpty().isNumeric();
+    req.checkBody('mins', 'Minutes is required/ Otherwise enter 0/ Should be Number').notEmpty().isNumeric();
+    req.checkBody('secs', 'Seconds is required/ Otherwise enter 0/ Should be Number').notEmpty().isNumeric();
+    req.checkBody('message', 'There has to be a message').notEmpty();
+    req.checkBody('count', 'You have to enter open count/ Atleast 1/ Should be Number').notEmpty().isNumeric();
+    req.checkBody('cpPassword', 'Confirm Portal Password should match Portal Password').notEmpty().equals(req.body.pPassword);
+
+
+    var portalData = {
+        PortalName: pName,
+        PortalPassword: pPassword,
+        TTL: ttl,
+        Message: message,
+        Count: count,
+        Owner_Details: owner_details,
+        expireAt: new Date(currentDate)
+    };
+
+    var errors= req.validationErrors();
+    if(errors){
+        res.render('createPortal',{
+            errors:errors
+        });
+    }else{
+        var newPortal = new Portal(portalData);
+
+        Portal.createPortal(newPortal, function(err, portal){
+            if (err) throw err;
+        });
+
+        req.flash('success_msg', 'You have successfully created a portal.. Inform your friend to check');
+
+        res.redirect('/');
+    }
+
+});
+
 
 passport.use(new LocalStrategy(
     function (username, password, done) {
