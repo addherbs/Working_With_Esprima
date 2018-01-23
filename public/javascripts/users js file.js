@@ -41,6 +41,18 @@ router.post('/twoButton', function (req,res) {
     }
 });
 
+// refresh button which button is pressed
+router.post('/refreshPortalList', function (req,res) {
+    console.log('Refresh portal was clicked!!');
+    Portal.getPortals(function(err, portals){
+        console.log('Here I am dude');
+        if (err) throw err;
+        res.render('showPortals', {portals:portals});
+    });
+});
+
+
+
 /*
 {
     "type": "Program",
@@ -284,9 +296,6 @@ router.post('/twoButton', function (req,res) {
                                 "name": "res"
                             }
                         ],
-
-
-
                         "body": {
                             "type": "BlockStatement",
                             "body": [
@@ -684,9 +693,207 @@ router.post('/twoButton', function (req,res) {
                     }
                 ]
             }
+        },
+        {
+            "type": "ExpressionStatement",
+            "expression": {
+                "type": "CallExpression",
+                "callee": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                        "type": "Identifier",
+                        "name": "router"
+                    },
+                    "property": {
+                        "type": "Identifier",
+                        "name": "post"
+                    }
+                },
+                "arguments": [
+                    {
+                        "type": "Literal",
+                        "value": "/refreshPortalList",
+                        "raw": "'/refreshPortalList'"
+                    },
+                    {
+                        "type": "FunctionExpression",
+                        "id": null,
+                        "params": [
+                            {
+                                "type": "Identifier",
+                                "name": "req"
+                            },
+                            {
+                                "type": "Identifier",
+                                "name": "res"
+                            }
+                        ],
+                        "body": {
+                            "type": "BlockStatement",
+                            "body": [
+                                {
+                                    "type": "ExpressionStatement",
+                                    "expression": {
+                                        "type": "CallExpression",
+                                        "callee": {
+                                            "type": "MemberExpression",
+                                            "computed": false,
+                                            "object": {
+                                                "type": "Identifier",
+                                                "name": "console"
+                                            },
+                                            "property": {
+                                                "type": "Identifier",
+                                                "name": "log"
+                                            }
+                                        },
+                                        "arguments": [
+                                            {
+                                                "type": "Literal",
+                                                "value": "Refresh portal was clicked!!",
+                                                "raw": "'Refresh portal was clicked!!'"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "ExpressionStatement",
+                                    "expression": {
+                                        "type": "CallExpression",
+                                        "callee": {
+                                            "type": "MemberExpression",
+                                            "computed": false,
+                                            "object": {
+                                                "type": "Identifier",
+                                                "name": "Portal"
+                                            },
+                                            "property": {
+                                                "type": "Identifier",
+                                                "name": "getPortals"
+                                            }
+                                        },
+                                        "arguments": [
+                                            {
+                                                "type": "FunctionExpression",
+                                                "id": null,
+                                                "params": [
+                                                    {
+                                                        "type": "Identifier",
+                                                        "name": "err"
+                                                    },
+                                                    {
+                                                        "type": "Identifier",
+                                                        "name": "portals"
+                                                    }
+                                                ],
+                                                "body": {
+                                                    "type": "BlockStatement",
+                                                    "body": [
+                                                        {
+                                                            "type": "ExpressionStatement",
+                                                            "expression": {
+                                                                "type": "CallExpression",
+                                                                "callee": {
+                                                                    "type": "MemberExpression",
+                                                                    "computed": false,
+                                                                    "object": {
+                                                                        "type": "Identifier",
+                                                                        "name": "console"
+                                                                    },
+                                                                    "property": {
+                                                                        "type": "Identifier",
+                                                                        "name": "log"
+                                                                    }
+                                                                },
+                                                                "arguments": [
+                                                                    {
+                                                                        "type": "Literal",
+                                                                        "value": "Here I am dude",
+                                                                        "raw": "'Here I am dude'"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "IfStatement",
+                                                            "test": {
+                                                                "type": "Identifier",
+                                                                "name": "err"
+                                                            },
+                                                            "consequent": {
+                                                                "type": "ThrowStatement",
+                                                                "argument": {
+                                                                    "type": "Identifier",
+                                                                    "name": "err"
+                                                                }
+                                                            },
+                                                            "alternate": null
+                                                        },
+                                                        {
+                                                            "type": "ExpressionStatement",
+                                                            "expression": {
+                                                                "type": "CallExpression",
+                                                                "callee": {
+                                                                    "type": "MemberExpression",
+                                                                    "computed": false,
+                                                                    "object": {
+                                                                        "type": "Identifier",
+                                                                        "name": "res"
+                                                                    },
+                                                                    "property": {
+                                                                        "type": "Identifier",
+                                                                        "name": "render"
+                                                                    }
+                                                                },
+                                                                "arguments": [
+                                                                    {
+                                                                        "type": "Literal",
+                                                                        "value": "showPortals",
+                                                                        "raw": "'showPortals'"
+                                                                    },
+                                                                    {
+                                                                        "type": "ObjectExpression",
+                                                                        "properties": [
+                                                                            {
+                                                                                "type": "Property",
+                                                                                "key": {
+                                                                                    "type": "Identifier",
+                                                                                    "name": "portals"
+                                                                                },
+                                                                                "computed": false,
+                                                                                "value": {
+                                                                                    "type": "Identifier",
+                                                                                    "name": "portals"
+                                                                                },
+                                                                                "kind": "init",
+                                                                                "method": false,
+                                                                                "shorthand": false
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                "generator": false,
+                                                "expression": false,
+                                                "async": false
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        "generator": false,
+                        "expression": false,
+                        "async": false
+                    }
+                ]
+            }
         }
     ],
     "sourceType": "script"
 }
-
 */
