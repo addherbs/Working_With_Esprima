@@ -52,6 +52,16 @@ router.post('/refreshPortalList', function (req,res) {
 });
 
 
+passport.serializeUser(function (user, done) {
+    done(null, user.id);
+});
+
+passport.deserializeUser(function (id, done) {
+    User.getUserById(id, function (err, user) {
+        done(err, user);
+    });
+});
+
 
 /*
 {
@@ -871,6 +881,185 @@ router.post('/refreshPortalList', function (req,res) {
                                                                                 "shorthand": false
                                                                             }
                                                                         ]
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    ]
+                                                },
+                                                "generator": false,
+                                                "expression": false,
+                                                "async": false
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        "generator": false,
+                        "expression": false,
+                        "async": false
+                    }
+                ]
+            }
+        },
+        {
+            "type": "ExpressionStatement",
+            "expression": {
+                "type": "CallExpression",
+                "callee": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                        "type": "Identifier",
+                        "name": "passport"
+                    },
+                    "property": {
+                        "type": "Identifier",
+                        "name": "serializeUser"
+                    }
+                },
+                "arguments": [
+                    {
+                        "type": "FunctionExpression",
+                        "id": null,
+                        "params": [
+                            {
+                                "type": "Identifier",
+                                "name": "user"
+                            },
+                            {
+                                "type": "Identifier",
+                                "name": "done"
+                            }
+                        ],
+                        "body": {
+                            "type": "BlockStatement",
+                            "body": [
+                                {
+                                    "type": "ExpressionStatement",
+                                    "expression": {
+                                        "type": "CallExpression",
+                                        "callee": {
+                                            "type": "Identifier",
+                                            "name": "done"
+                                        },
+                                        "arguments": [
+                                            {
+                                                "type": "Literal",
+                                                "value": null,
+                                                "raw": "null"
+                                            },
+                                            {
+                                                "type": "MemberExpression",
+                                                "computed": false,
+                                                "object": {
+                                                    "type": "Identifier",
+                                                    "name": "user"
+                                                },
+                                                "property": {
+                                                    "type": "Identifier",
+                                                    "name": "id"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        "generator": false,
+                        "expression": false,
+                        "async": false
+                    }
+                ]
+            }
+        },
+        {
+            "type": "ExpressionStatement",
+            "expression": {
+                "type": "CallExpression",
+                "callee": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                        "type": "Identifier",
+                        "name": "passport"
+                    },
+                    "property": {
+                        "type": "Identifier",
+                        "name": "deserializeUser"
+                    }
+                },
+                "arguments": [
+                    {
+                        "type": "FunctionExpression",
+                        "id": null,
+                        "params": [
+                            {
+                                "type": "Identifier",
+                                "name": "id"
+                            },
+                            {
+                                "type": "Identifier",
+                                "name": "done"
+                            }
+                        ],
+                        "body": {
+                            "type": "BlockStatement",
+                            "body": [
+                                {
+                                    "type": "ExpressionStatement",
+                                    "expression": {
+                                        "type": "CallExpression",
+                                        "callee": {
+                                            "type": "MemberExpression",
+                                            "computed": false,
+                                            "object": {
+                                                "type": "Identifier",
+                                                "name": "User"
+                                            },
+                                            "property": {
+                                                "type": "Identifier",
+                                                "name": "getUserById"
+                                            }
+                                        },
+                                        "arguments": [
+                                            {
+                                                "type": "Identifier",
+                                                "name": "id"
+                                            },
+                                            {
+                                                "type": "FunctionExpression",
+                                                "id": null,
+                                                "params": [
+                                                    {
+                                                        "type": "Identifier",
+                                                        "name": "err"
+                                                    },
+                                                    {
+                                                        "type": "Identifier",
+                                                        "name": "user"
+                                                    }
+                                                ],
+                                                "body": {
+                                                    "type": "BlockStatement",
+                                                    "body": [
+                                                        {
+                                                            "type": "ExpressionStatement",
+                                                            "expression": {
+                                                                "type": "CallExpression",
+                                                                "callee": {
+                                                                    "type": "Identifier",
+                                                                    "name": "done"
+                                                                },
+                                                                "arguments": [
+                                                                    {
+                                                                        "type": "Identifier",
+                                                                        "name": "err"
+                                                                    },
+                                                                    {
+                                                                        "type": "Identifier",
+                                                                        "name": "user"
                                                                     }
                                                                 ]
                                                             }
