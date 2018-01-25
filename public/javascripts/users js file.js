@@ -22,6 +22,14 @@ router.get('/login', function (req,res) {
 });
 
 
+router.get('/logout', function (req,res) {
+    req.logOut();
+    req.flash('success_msg', 'You are logged out');
+    res.redirect('/users/login');
+});
+
+
+
 // verify which button is pressed
 router.post('/twoButton', function (req,res) {
 
@@ -330,6 +338,127 @@ passport.deserializeUser(function (id, done) {
                                                 "type": "Literal",
                                                 "value": "login",
                                                 "raw": "'login'"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        "generator": false,
+                        "expression": false,
+                        "async": false
+                    }
+                ]
+            }
+        },
+        {
+            "type": "ExpressionStatement",
+            "expression": {
+                "type": "CallExpression",
+                "callee": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                        "type": "Identifier",
+                        "name": "router"
+                    },
+                    "property": {
+                        "type": "Identifier",
+                        "name": "get"
+                    }
+                },
+                "arguments": [
+                    {
+                        "type": "Literal",
+                        "value": "/logout",
+                        "raw": "'/logout'"
+                    },
+                    {
+                        "type": "FunctionExpression",
+                        "id": null,
+                        "params": [
+                            {
+                                "type": "Identifier",
+                                "name": "req"
+                            },
+                            {
+                                "type": "Identifier",
+                                "name": "res"
+                            }
+                        ],
+                        "body": {
+                            "type": "BlockStatement",
+                            "body": [
+                                {
+                                    "type": "ExpressionStatement",
+                                    "expression": {
+                                        "type": "CallExpression",
+                                        "callee": {
+                                            "type": "MemberExpression",
+                                            "computed": false,
+                                            "object": {
+                                                "type": "Identifier",
+                                                "name": "req"
+                                            },
+                                            "property": {
+                                                "type": "Identifier",
+                                                "name": "logOut"
+                                            }
+                                        },
+                                        "arguments": []
+                                    }
+                                },
+                                {
+                                    "type": "ExpressionStatement",
+                                    "expression": {
+                                        "type": "CallExpression",
+                                        "callee": {
+                                            "type": "MemberExpression",
+                                            "computed": false,
+                                            "object": {
+                                                "type": "Identifier",
+                                                "name": "req"
+                                            },
+                                            "property": {
+                                                "type": "Identifier",
+                                                "name": "flash"
+                                            }
+                                        },
+                                        "arguments": [
+                                            {
+                                                "type": "Literal",
+                                                "value": "success_msg",
+                                                "raw": "'success_msg'"
+                                            },
+                                            {
+                                                "type": "Literal",
+                                                "value": "You are logged out",
+                                                "raw": "'You are logged out'"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "ExpressionStatement",
+                                    "expression": {
+                                        "type": "CallExpression",
+                                        "callee": {
+                                            "type": "MemberExpression",
+                                            "computed": false,
+                                            "object": {
+                                                "type": "Identifier",
+                                                "name": "res"
+                                            },
+                                            "property": {
+                                                "type": "Identifier",
+                                                "name": "redirect"
+                                            }
+                                        },
+                                        "arguments": [
+                                            {
+                                                "type": "Literal",
+                                                "value": "/users/login",
+                                                "raw": "'/users/login'"
                                             }
                                         ]
                                     }
@@ -1084,5 +1213,4 @@ passport.deserializeUser(function (id, done) {
         }
     ],
     "sourceType": "script"
-}
 */
