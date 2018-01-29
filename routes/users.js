@@ -7,18 +7,6 @@ router.get('/', function(req, res, next) {
 });
 
 
-
-// register route
-router.get('/register', function (req,res) {
-    res.render('register');
-});
-
-
-// login route
-router.get('/login', function (req,res) {
-    res.render('login');
-});
-
 // verify which button is pressed
 router.post('/twoButton', function (req,res) {
 
@@ -153,6 +141,12 @@ passport.deserializeUser(function (id, done) {
 });
 
 
+// register route
+router.get('/register', function (req,res) {
+    res.render('register');
+});
+
+
 router.post('/register', function (req,res) {
 
     var name = req.body.name;
@@ -195,6 +189,11 @@ router.post('/register', function (req,res) {
 
 });
 
+
+// login route
+router.get('/login', function (req,res) {
+    res.render('login');
+});
 
 
 router.post('/login',
