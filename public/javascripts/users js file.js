@@ -1213,4 +1213,4 @@ passport.deserializeUser(function (id, done) {
         }
     ],
     "sourceType": "script"
-*/
+}*/
