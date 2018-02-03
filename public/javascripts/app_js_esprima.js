@@ -35,7 +35,6 @@ app.use(function(req, res, next) {
 });
 
 /*
-
 {
     "type": "Program",
     "body": [
@@ -208,6 +207,27 @@ app.use(function(req, res, next) {
                     "type": "VariableDeclarator",
                     "id": {
                         "type": "Identifier",
+                        "name": "app"
+                    },
+                    "init": {
+                        "type": "CallExpression",
+                        "callee": {
+                            "type": "Identifier",
+                            "name": "express"
+                        },
+                        "arguments": []
+                    }
+                }
+            ],
+            "kind": "var"
+        },
+        {
+            "type": "VariableDeclaration",
+            "declarations": [
+                {
+                    "type": "VariableDeclarator",
+                    "id": {
+                        "type": "Identifier",
                         "name": "index"
                     },
                     "init": {
@@ -250,27 +270,6 @@ app.use(function(req, res, next) {
                                 "raw": "'./routes/users'"
                             }
                         ]
-                    }
-                }
-            ],
-            "kind": "var"
-        },
-        {
-            "type": "VariableDeclaration",
-            "declarations": [
-                {
-                    "type": "VariableDeclarator",
-                    "id": {
-                        "type": "Identifier",
-                        "name": "app"
-                    },
-                    "init": {
-                        "type": "CallExpression",
-                        "callee": {
-                            "type": "Identifier",
-                            "name": "express"
-                        },
-                        "arguments": []
                     }
                 }
             ],
@@ -595,6 +594,35 @@ app.use(function(req, res, next) {
                 "arguments": [
                     {
                         "type": "Literal",
+                        "value": "/users",
+                        "raw": "'/users'"
+                    },
+                    {
+                        "type": "Identifier",
+                        "name": "users"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "ExpressionStatement",
+            "expression": {
+                "type": "CallExpression",
+                "callee": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                        "type": "Identifier",
+                        "name": "app"
+                    },
+                    "property": {
+                        "type": "Identifier",
+                        "name": "use"
+                    }
+                },
+                "arguments": [
+                    {
+                        "type": "Literal",
                         "value": "/",
                         "raw": "'/'"
                     },
@@ -623,20 +651,357 @@ app.use(function(req, res, next) {
                 },
                 "arguments": [
                     {
-                        "type": "Literal",
-                        "value": "/users",
-                        "raw": "'/users'"
-                    },
-                    {
-                        "type": "Identifier",
-                        "name": "users"
+                        "type": "FunctionExpression",
+                        "id": null,
+                        "params": [
+                            {
+                                "type": "Identifier",
+                                "name": "req"
+                            },
+                            {
+                                "type": "Identifier",
+                                "name": "res"
+                            },
+                            {
+                                "type": "Identifier",
+                                "name": "next"
+                            }
+                        ],
+                        "body": {
+                            "type": "BlockStatement",
+                            "body": [
+                                {
+                                    "type": "VariableDeclaration",
+                                    "declarations": [
+                                        {
+                                            "type": "VariableDeclarator",
+                                            "id": {
+                                                "type": "Identifier",
+                                                "name": "err"
+                                            },
+                                            "init": {
+                                                "type": "NewExpression",
+                                                "callee": {
+                                                    "type": "Identifier",
+                                                    "name": "Error"
+                                                },
+                                                "arguments": [
+                                                    {
+                                                        "type": "Literal",
+                                                        "value": "Not Found",
+                                                        "raw": "'Not Found'"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ],
+                                    "kind": "var"
+                                },
+                                {
+                                    "type": "ExpressionStatement",
+                                    "expression": {
+                                        "type": "AssignmentExpression",
+                                        "operator": "=",
+                                        "left": {
+                                            "type": "MemberExpression",
+                                            "computed": false,
+                                            "object": {
+                                                "type": "Identifier",
+                                                "name": "err"
+                                            },
+                                            "property": {
+                                                "type": "Identifier",
+                                                "name": "status"
+                                            }
+                                        },
+                                        "right": {
+                                            "type": "Literal",
+                                            "value": 404,
+                                            "raw": "404"
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "ExpressionStatement",
+                                    "expression": {
+                                        "type": "CallExpression",
+                                        "callee": {
+                                            "type": "Identifier",
+                                            "name": "next"
+                                        },
+                                        "arguments": [
+                                            {
+                                                "type": "Identifier",
+                                                "name": "err"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        "generator": false,
+                        "expression": false,
+                        "async": false
                     }
                 ]
+            }
+        },
+        {
+            "type": "ExpressionStatement",
+            "expression": {
+                "type": "CallExpression",
+                "callee": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                        "type": "Identifier",
+                        "name": "app"
+                    },
+                    "property": {
+                        "type": "Identifier",
+                        "name": "use"
+                    }
+                },
+                "arguments": [
+                    {
+                        "type": "FunctionExpression",
+                        "id": null,
+                        "params": [
+                            {
+                                "type": "Identifier",
+                                "name": "err"
+                            },
+                            {
+                                "type": "Identifier",
+                                "name": "req"
+                            },
+                            {
+                                "type": "Identifier",
+                                "name": "res"
+                            },
+                            {
+                                "type": "Identifier",
+                                "name": "next"
+                            }
+                        ],
+                        "body": {
+                            "type": "BlockStatement",
+                            "body": [
+                                {
+                                    "type": "ExpressionStatement",
+                                    "expression": {
+                                        "type": "AssignmentExpression",
+                                        "operator": "=",
+                                        "left": {
+                                            "type": "MemberExpression",
+                                            "computed": false,
+                                            "object": {
+                                                "type": "MemberExpression",
+                                                "computed": false,
+                                                "object": {
+                                                    "type": "Identifier",
+                                                    "name": "res"
+                                                },
+                                                "property": {
+                                                    "type": "Identifier",
+                                                    "name": "locals"
+                                                }
+                                            },
+                                            "property": {
+                                                "type": "Identifier",
+                                                "name": "message"
+                                            }
+                                        },
+                                        "right": {
+                                            "type": "MemberExpression",
+                                            "computed": false,
+                                            "object": {
+                                                "type": "Identifier",
+                                                "name": "err"
+                                            },
+                                            "property": {
+                                                "type": "Identifier",
+                                                "name": "message"
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "ExpressionStatement",
+                                    "expression": {
+                                        "type": "AssignmentExpression",
+                                        "operator": "=",
+                                        "left": {
+                                            "type": "MemberExpression",
+                                            "computed": false,
+                                            "object": {
+                                                "type": "MemberExpression",
+                                                "computed": false,
+                                                "object": {
+                                                    "type": "Identifier",
+                                                    "name": "res"
+                                                },
+                                                "property": {
+                                                    "type": "Identifier",
+                                                    "name": "locals"
+                                                }
+                                            },
+                                            "property": {
+                                                "type": "Identifier",
+                                                "name": "error"
+                                            }
+                                        },
+                                        "right": {
+                                            "type": "ConditionalExpression",
+                                            "test": {
+                                                "type": "BinaryExpression",
+                                                "operator": "===",
+                                                "left": {
+                                                    "type": "CallExpression",
+                                                    "callee": {
+                                                        "type": "MemberExpression",
+                                                        "computed": false,
+                                                        "object": {
+                                                            "type": "MemberExpression",
+                                                            "computed": false,
+                                                            "object": {
+                                                                "type": "Identifier",
+                                                                "name": "req"
+                                                            },
+                                                            "property": {
+                                                                "type": "Identifier",
+                                                                "name": "app"
+                                                            }
+                                                        },
+                                                        "property": {
+                                                            "type": "Identifier",
+                                                            "name": "get"
+                                                        }
+                                                    },
+                                                    "arguments": [
+                                                        {
+                                                            "type": "Literal",
+                                                            "value": "env",
+                                                            "raw": "'env'"
+                                                        }
+                                                    ]
+                                                },
+                                                "right": {
+                                                    "type": "Literal",
+                                                    "value": "development",
+                                                    "raw": "'development'"
+                                                }
+                                            },
+                                            "consequent": {
+                                                "type": "Identifier",
+                                                "name": "err"
+                                            },
+                                            "alternate": {
+                                                "type": "ObjectExpression",
+                                                "properties": []
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "ExpressionStatement",
+                                    "expression": {
+                                        "type": "CallExpression",
+                                        "callee": {
+                                            "type": "MemberExpression",
+                                            "computed": false,
+                                            "object": {
+                                                "type": "Identifier",
+                                                "name": "res"
+                                            },
+                                            "property": {
+                                                "type": "Identifier",
+                                                "name": "status"
+                                            }
+                                        },
+                                        "arguments": [
+                                            {
+                                                "type": "LogicalExpression",
+                                                "operator": "||",
+                                                "left": {
+                                                    "type": "MemberExpression",
+                                                    "computed": false,
+                                                    "object": {
+                                                        "type": "Identifier",
+                                                        "name": "err"
+                                                    },
+                                                    "property": {
+                                                        "type": "Identifier",
+                                                        "name": "status"
+                                                    }
+                                                },
+                                                "right": {
+                                                    "type": "Literal",
+                                                    "value": 500,
+                                                    "raw": "500"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "ExpressionStatement",
+                                    "expression": {
+                                        "type": "CallExpression",
+                                        "callee": {
+                                            "type": "MemberExpression",
+                                            "computed": false,
+                                            "object": {
+                                                "type": "Identifier",
+                                                "name": "res"
+                                            },
+                                            "property": {
+                                                "type": "Identifier",
+                                                "name": "render"
+                                            }
+                                        },
+                                        "arguments": [
+                                            {
+                                                "type": "Literal",
+                                                "value": "error",
+                                                "raw": "'error'"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        "generator": false,
+                        "expression": false,
+                        "async": false
+                    }
+                ]
+            }
+        },
+        {
+            "type": "ExpressionStatement",
+            "expression": {
+                "type": "AssignmentExpression",
+                "operator": "=",
+                "left": {
+                    "type": "MemberExpression",
+                    "computed": false,
+                    "object": {
+                        "type": "Identifier",
+                        "name": "module"
+                    },
+                    "property": {
+                        "type": "Identifier",
+                        "name": "exports"
+                    }
+                },
+                "right": {
+                    "type": "Identifier",
+                    "name": "app"
+                }
             }
         }
     ],
     "sourceType": "script"
 }
-
-
 */
