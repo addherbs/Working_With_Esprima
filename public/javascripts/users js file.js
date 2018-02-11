@@ -145,11 +145,7 @@ router.post('/createPortal', function (req,res) {
     var portalData = {
         PortalName: pName,
         PortalPassword: pPassword,
-        TTL: ttl,
-        Message: message,
-        Count: count,
-        Owner_Details: owner_details,
-        expireAt: new Date(currentDate)
+        TTL: ttl
     };
 
     var errors= req.validationErrors();
